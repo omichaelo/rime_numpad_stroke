@@ -4,7 +4,9 @@
  
 此方案笔顺数据与灵感来自于[单手笔顺输入法码表](https://github.com/YQ-YSY/stroke-seq_MB)。特此鸣谢！！！
 
-## 功能
+## 使用
+
+把stroke_order.dict.yaml和stroke_order.schema.yaml放进Rime输入法的用户资料夹。然后重新部署便可以使用。[用户资料夹位置官方说明书](https://github.com/rime/home/wiki/RimeWithSchemata#%E5%BF%85%E7%9F%A5%E5%BF%85%E6%9C%83)。[如何重新部署官方说明书](https://github.com/rime/home/wiki/CustomizationGuide)
 
 键位     | 操作
 ---------|-----
