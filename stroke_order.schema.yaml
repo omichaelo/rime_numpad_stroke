@@ -9,6 +9,7 @@ schema:
 
 engine:
   processors:
+    - ascii_composer
     - key_binder
     - speller
     - punctuator
@@ -16,6 +17,7 @@ engine:
     - navigator
     - express_editor
   segmentors:
+    - ascii_segmentor
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
@@ -29,6 +31,9 @@ engine:
 switches:
   - name: simplification
     reset: 1
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
 
 simplifier:
   option_name: simplification
@@ -71,8 +76,65 @@ key_binder:
     - {accept: KP_Multiply, send: BackSpace, when: has_menu}
 
     # 为了能够使用大键盘的数字键输入数字，笔画用了abcde作一丨丿丶𠃌，从而释放12345
-    - {accept: KP_1, send: a, when: always}
-    - {accept: KP_2, send: b, when: always}
-    - {accept: KP_3, send: c, when: always}
+    - {accept: KP_1, send: b, when: always}
+    - {accept: KP_2, send: c, when: always}
+    - {accept: KP_3, send: e, when: always}
     - {accept: KP_4, send: d, when: always}
-    - {accept: KP_5, send: e, when: always}
+    - {accept: KP_5, send: a, when: always}
+
+    # Left Shift 切换中/英
+    - {accept: Shift_L, toggle: ascii_mode, when: always}
+
+    # 中文模式下，a-zA-Z输入无效，以免用户混乱
+    - {accept: a, send: 1, when: always}
+    - {accept: b, send: 1, when: always}
+    - {accept: c, send: 1, when: always}
+    - {accept: d, send: 1, when: always}
+    - {accept: e, send: 1, when: always}
+    - {accept: f, send: 1, when: always}
+    - {accept: g, send: 1, when: always}
+    - {accept: h, send: 1, when: always}
+    - {accept: i, send: 1, when: always}
+    - {accept: j, send: 1, when: always}
+    - {accept: k, send: 1, when: always}
+    - {accept: l, send: 1, when: always}
+    - {accept: m, send: 1, when: always}
+    - {accept: "n", send: 1, when: always}
+    - {accept: o, send: 1, when: always}
+    - {accept: p, send: 1, when: always}
+    - {accept: q, send: 1, when: always}
+    - {accept: r, send: 1, when: always}
+    - {accept: s, send: 1, when: always}
+    - {accept: t, send: 1, when: always}
+    - {accept: u, send: 1, when: always}
+    - {accept: v, send: 1, when: always}
+    - {accept: w, send: 1, when: always}
+    - {accept: x, send: 1, when: always}
+    - {accept: "y", send: 1, when: always}
+    - {accept: z, send: 1, when: always}
+    - {accept: A, send: 1, when: always}
+    - {accept: B, send: 1, when: always}
+    - {accept: C, send: 1, when: always}
+    - {accept: D, send: 1, when: always}
+    - {accept: E, send: 1, when: always}
+    - {accept: F, send: 1, when: always}
+    - {accept: G, send: 1, when: always}
+    - {accept: H, send: 1, when: always}
+    - {accept: I, send: 1, when: always}
+    - {accept: J, send: 1, when: always}
+    - {accept: K, send: 1, when: always}
+    - {accept: L, send: 1, when: always}
+    - {accept: M, send: 1, when: always}
+    - {accept: 'N', send: 1, when: always} # 这个好像无效
+    - {accept: O, send: 1, when: always}
+    - {accept: P, send: 1, when: always}
+    - {accept: Q, send: 1, when: always}
+    - {accept: R, send: 1, when: always}
+    - {accept: S, send: 1, when: always}
+    - {accept: T, send: 1, when: always}
+    - {accept: U, send: 1, when: always}
+    - {accept: V, send: 1, when: always}
+    - {accept: W, send: 1, when: always}
+    - {accept: X, send: 1, when: always}
+    - {accept: 'Y', send: 1, when: always} # 这个好像无效
+    - {accept: Z, send: 1, when: always}
