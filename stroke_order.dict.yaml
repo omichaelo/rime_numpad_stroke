@@ -1,5 +1,12 @@
 # Rime dictionary
 # encoding: utf-8
+# 
+#   鸣谢：
+#   感谢单手笔顺输入法码表(GPLv3)(github.com/YQ-YSY/stroke-seq_MB)的贡献者！
+#
+# 以下数据按照单手笔顺输入法码表改编：
+# - 只取了单手笔顺输入法数据库里的"字"和"笔顺码"
+# - 为了可以使用Rime自带字频系统，把字转换成了繁体，再用filter/simplifier在输入时转回简体
 
 ---
 name: stroke_order
