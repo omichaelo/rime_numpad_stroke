@@ -2,7 +2,7 @@
 
 这是一款[Rime输入法](rime.im)的输入方案。
  
-此方案尽量按照[单手笔顺输入法码表](https://github.com/YQ-YSY/stroke-seq_MB)里描述的输入法设计。
+此方案笔顺数据与灵感来自于[单手笔顺输入法码表](https://github.com/YQ-YSY/stroke-seq_MB)。特此鸣谢！！！
 
 ## 功能
 
