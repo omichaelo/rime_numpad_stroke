@@ -1,0 +1,78 @@
+# Rime schema
+# encoding: utf-8
+#
+
+schema:
+  schema_id: stroke_order
+  name: 笔顺输入法
+  version: "1"
+
+engine:
+  processors:
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - echo_translator
+    - punct_translator
+    - table_translator
+  filters:
+    - simplifier # 为了能够使用rime自带的字频系统，笔顺数据库转换成了繁体字，这里转回简体
+
+switches:
+  - name: simplification
+    reset: 1
+
+simplifier:
+  option_name: simplification
+  opencc_config: t2s.json
+
+speller:
+  alphabet: abcde
+
+punctuator:
+  import_preset: default
+
+translator:
+  dictionary: stroke_order
+  preedit_format:
+    - "xform/a/一/"
+    - "xform/b/丨/"
+    - "xform/c/丿/"
+    - "xform/d/丶/"
+    - "xform/e/𠃌/"
+  comment_format:
+    - "xform/a/一/"
+    - "xform/b/丨/"
+    - "xform/c/丿/"
+    - "xform/d/丶/"
+    - "xform/e/𠃌/"
+
+key_binder:
+  bindings:
+
+    # 小数板“减号”往上翻页
+    - {accept: KP_Subtract, send: Page_Up, when: has_menu}
+
+    # 小数板“加号”往下翻页
+    - {accept: KP_Add, send: Page_Down, when: has_menu}
+
+    # 回车确认输入
+    - {accept: Return, send: space, when: has_menu}
+
+    # 小数板“乘号”删除笔画，但是无法删除已经输入的字
+    - {accept: KP_Multiply, send: BackSpace, when: has_menu}
+
+    # 为了能够使用大键盘的数字键输入数字，笔画用了abcde作一丨丿丶𠃌，从而释放12345
+    - {accept: KP_1, send: b, when: always}
+    - {accept: KP_2, send: c, when: always}
+    - {accept: KP_3, send: e, when: always}
+    - {accept: KP_4, send: d, when: always}
+    - {accept: KP_5, send: a, when: always}
