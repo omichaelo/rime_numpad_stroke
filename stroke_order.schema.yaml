@@ -71,8 +71,8 @@ key_binder:
     - {accept: KP_Multiply, send: BackSpace, when: has_menu}
 
     # 为了能够使用大键盘的数字键输入数字，笔画用了abcde作一丨丿丶𠃌，从而释放12345
-    - {accept: KP_1, send: b, when: always}
-    - {accept: KP_2, send: c, when: always}
-    - {accept: KP_3, send: e, when: always}
+    - {accept: KP_1, send: a, when: always}
+    - {accept: KP_2, send: b, when: always}
+    - {accept: KP_3, send: c, when: always}
     - {accept: KP_4, send: d, when: always}
-    - {accept: KP_5, send: a, when: always}
+    - {accept: KP_5, send: e, when: always}
